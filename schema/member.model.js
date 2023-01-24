@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
-const { member_type_enums, member_status_enums } = require("../lib/config");
+const {
+  member_type_enums,
+  member_status_enums,
+  ordernary_enums,
+} = require("../lib/config");
 
 const memberSchema = new mongoose.Schema(
   {
@@ -11,6 +15,7 @@ const memberSchema = new mongoose.Schema(
     mb_phone: {
       type: String,
       required: true,
+      index: { unique: true, sparse: true },
     },
     mb_password: {
       type: String,
