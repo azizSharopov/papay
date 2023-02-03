@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const {
+  product_volume_enums,
   product_collection_enums,
   product_status_enums,
   product_size_enums,
@@ -25,7 +26,7 @@ const productSchema = new mongoose.Schema(
       required: false,
       default: "PAUSED",
       enum: {
-        values: [product_status_enums],
+        values: product_status_enums,
         message: "{VALUE} is not among permitted enum values",
       },
     },
@@ -47,7 +48,7 @@ const productSchema = new mongoose.Schema(
       default: "normal",
       required: function () {
         const sized_list = ["dish", "salad", "dessert"];
-        return sized_list.includes(this, product_collection);
+        return sized_list.includes(this.product_collection);
       },
       enum: {
         values: product_size_enums,
