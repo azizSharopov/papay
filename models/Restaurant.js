@@ -23,7 +23,7 @@ class Restaurant {
 
   async updateRestaurantByAdminData(update_data) {
     try {
-      const id = shapeIntoMongooseObjectId(uptade_data?.id);
+      const id = shapeIntoMongooseObjectId(update_data?.id);
       const result = await this.memberModel
         .findByIdAndUpdate({ _id: id }, update_data, {
           runValidators: true,
