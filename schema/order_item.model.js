@@ -8,6 +8,11 @@ const orderItemSchema = new mongoose.Schema(
     item_price: { type: Number, required: true },
     order_id: {
       type: Schema.Types.ObjectId,
+      ref: "Order",
+      required: false,
+    },
+    product_id: {
+      type: Schema.Types.ObjectId,
       ref: "Product",
       required: false,
     },
